@@ -13,4 +13,4 @@ build_script:
   - ctest
   
 test_script:
-  - C:\projects\testC\x64\Release\myTest.exe
+  - C:\projects\testc\build\myTest.exe
