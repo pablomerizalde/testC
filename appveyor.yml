@@ -10,6 +10,10 @@ build_script:
   - cd build
   - cmake -G "Visual Studio 14 2015 Win64" ..
   - cmake --build . --config Release
-  
+
+before_test:  
+  - (New-Object Net.WebClient).DownloadFile('http://download.microsoft.com/download/f/2/6/f263ac46-1fe9-4ae9-8fd3-21102100ebf5/msxsl.exe', "$env:appveyor_build_folder\msxsl.exe")
+
 test_script:
-  - C:\projects\testc\build\Release\exe.exe
+  - ctest -VV -C Release --no-compress-output
+  - cmd dir
