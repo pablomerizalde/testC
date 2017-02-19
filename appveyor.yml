@@ -16,6 +16,6 @@ build_script:
 
 test_script:
   - cmd: ctest -VV -C Release --no-compress-output -T test
-  - ps: Copy-Item Testing\$(Get-Content Testing\TAG -TotalCount 1)\Test.xml testResult.xml
-  - cmd: cat testResult.xml
+  - ps: Copy-Item Testing\$(Get-Content Testing\TAG -TotalCount 1)\Test.xml ctestTestResult.xml
+  - cmd: msxsl.exe ctestTestResult.xml ctest-to-junit.xsl -o junitTestResult.xml
   - cmd: dir
