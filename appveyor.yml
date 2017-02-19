@@ -14,7 +14,8 @@ build_script:
 
 before_test:
   - ps: (New-Object Net.WebClient).DownloadFile('http://download.microsoft.com/download/f/2/6/f263ac46-1fe9-4ae9-8fd3-21102100ebf5/msxsl.exe', "$env:appveyor_build_folder\msxsl.exe")
-
+  - cmd: dir
+  
 test_script:
   - cmd: ctest -VV -C Release --no-compress-output -T test
   - ps: Copy-Item Testing\$(Get-Content Testing\TAG -TotalCount 1)\Test.xml ctestTestResult.xml
