@@ -15,6 +15,6 @@ build_script:
   - cmake --build . --config Release
 
 test_script:
-  - cmd: ctest -VV -C Release --no-compress-output
+  - cmd: ctest -VV -C Release --no-compress-output -T test
   - cmd: cat testResult.xml
   - cmd: dir
