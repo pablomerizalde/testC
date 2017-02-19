@@ -5,15 +5,16 @@ environment:
   BOOST_ROOT: C:\Libraries\boost_1_59_0
   BOOST_LIBRARYDIR: C:\Libraries\boost_1_59_0\lib64-msvc-14.0
 
+install:
+  - ps: (New-Object Net.WebClient).DownloadFile('http://download.microsoft.com/download/f/2/6/f263ac46-1fe9-4ae9-8fd3-21102100ebf5/msxsl.exe', "$env:appveyor_build_folder\msxsl.exe")
+
 build_script:
   - md build
   - cd build
   - cmake -G "Visual Studio 14 2015 Win64" ..
   - cmake --build . --config Release
 
-before_test:  
-  - ps: (New-Object Net.WebClient).DownloadFile('http://download.microsoft.com/download/f/2/6/f263ac46-1fe9-4ae9-8fd3-21102100ebf5/msxsl.exe', "$env:appveyor_build_folder\msxsl.exe")
 
 test_script:
-  - cmd: ctest -VV -C Release --no-compress-output
+  - cmd: ctest -VV -C Release --no-compress-output testResult.xml
   - cmd: dir
