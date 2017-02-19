@@ -13,7 +13,7 @@ build_script:
   - cmake --build . --config Release
 
 before_test:
-  - ps: (New-Object Net.WebClient).DownloadFile('http://download.microsoft.com/download/f/2/6/f263ac46-1fe9-4ae9-8fd3-21102100ebf5/msxsl.exe', "$env:appveyor_build_folder\msxsl.exe")
+  - ps: Start-FileDownload 'http://download.microsoft.com/download/f/2/6/f263ac46-1fe9-4ae9-8fd3-21102100ebf5/msxsl.exe'
   - cmd: dir
   
 test_script:
