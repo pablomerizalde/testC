@@ -12,4 +12,4 @@ build_script:
   - cmake --build . --config Release
   
 test_script:
-  - ctest -VV -C Release
+  - C:\projects\testc\build\Release\exe.exe
