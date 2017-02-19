@@ -16,5 +16,5 @@ build_script:
 
 
 test_script:
-  - cmd: ctest -VV -C Release --no-compress-output testResult.xml
+  - cmd: ctest -VV -C Release --no-compress-output -O testResult.xml
   - cmd: dir
